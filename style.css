@@ -1,0 +1,178 @@
+/* Reset ve temel stiller */
+
+
+body{
+    background-image: url('ankara_kutuphane.jpeg'); /* resim yolu */
+    background-size: cover;             /* ekranı tamamen kaplaması için */
+    background-repeat: repeat-y;       /* tekrar etmemesi için */
+    background-position: center;        /* ortalanması için */
+}
+
+
+
+
+
+h1,h2{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+
+section label{
+    color: white;
+}
+
+
+
+#eklebuton{
+    margin-left: 15px;
+    margin-top: auto;
+    height: 45.6px;
+    width: 110px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+/* Ana içerik */
+main {
+    display: grid;
+    gap: 30px;
+}
+
+/* Kitap ekleme formu */
+.add-book-section {
+    background:#486ca8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.add-book-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+
+button {
+    background: #0fb535;
+    color: white;
+    border: none;
+    width: 100px;
+    height: 30px;
+    margin-left: 350px;
+    
+    
+    
+}
+
+button:hover {
+    background:#20750d;
+}
+
+/* Kitap listesi */
+.books-section {
+    background-color:#486ca8 ;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2 2px 4px rgba(0,0,0,0.1);
+    opacity: 0.9;
+}
+
+.books-section h2 {
+    margin-bottom: 20px;
+    color:white;
+    
+}
+
+.books-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Bootstrap'in olası override'larını engellemek için daha özgül bir kural */
+#booksList.books-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+
+.book-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    background: #f9f9f9;
+}
+
+.book-item h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.book-item p {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.delete-btn {
+    background: #dc3545;
+    margin-top: 10px;
+    margin-left: 0;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .books-list {
+        grid-template-columns: 1fr;
+    }
+}
