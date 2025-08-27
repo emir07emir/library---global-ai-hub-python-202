@@ -1,38 +1,62 @@
 # library.py dosyasından gerekli sınıfları import ediyoruz
-from library import Library, Book, Ebook, Audiobook, Comics
+from asama2.sssss import Library, Book, Ebook, Audiobook, Comics
+
 
 def main():
     # Önce bir kütüphane nesnesi oluşturuyoruz
-    my_library = Library("Benim Kütüphanem")
-    
+    my_library = Library("City Library")
+
     print("=== KÜTÜPHANE YÖNETİM SİSTEMİ ===")
-    
+
     while True:
         print("\nMenü:")
-        print("1. Kitap Ekle")
-        print("2. Kitap Sil")
-        print("3. Kitapları Listele")
-        print("4. Kitap Ara")
-        print("5. Çıkış Yap")
-        
-        secim = input("\nSeçiminizi yapın (1-5): ")
-        
-        if secim == "1":
-            # Kitap ekleme
-            print("\n--- KİTAP EKLEME ---")
+        print("1. Kitap Ekle (ISBN ile)")
+        print("2. Kitap Ekle (Manuel)")
+        print("3. Kitap Sil")
+        print("4. Kitapları Listele")
+        print("5. Kitap Ara")
+        print("6. Çıkış Yap")
+
+        option = input("\nSeçiminizi yapın (1-6): ")
+
+        if option == "1":
+            # ISBN ile kitap ekleme
+            print("\n--- ISBN İLE KİTAP EKLEME ---")
+            isbn = input("Kitap ISBN numarası: ")
+
+            if not isbn.strip():
+                print("ISBN numarası boş olamaz!")
+                continue
+
             print("Kitap türü seçin:")
             print("1. Normal Kitap")
             print("2. E-Kitap")
             print("3. Sesli Kitap")
             print("4. Çizgi Roman")
-            
+            print("\n")
             book_type = input("Seçiminiz (1-4): ")
-            
+
+            # ISBN ile kitap ekleme işlemi
+            success = my_library.add_book_by_isbn(isbn, book_type)
+            if not success:
+                print("Kitap eklenemedi. Lütfen tekrar deneyin.")
+
+        elif option == "2":
+            # Manuel kitap ekleme (eski yöntem)
+            print("\n--- MANUEL KİTAP EKLEME ---")
+            print("Kitap türü seçin:")
+            print("1. Normal Kitap")
+            print("2. E-Kitap")
+            print("3. Sesli Kitap")
+            print("4. Çizgi Roman")
+            print("\n")
+            book_type = input("Seçiminiz (1-4): ")
+
             title = input("Kitap başlığı: ")
             author = input("Yazar: ")
             isbn = input("ISBN: ")
             year = int(input("Yayın yılı: "))
-            
+
             if book_type == "1":
                 # Normal kitap oluştur
                 new_book = Book(title, author, isbn, year)
@@ -52,23 +76,23 @@ def main():
             else:
                 print("Geçersiz seçim!")
                 continue
-            
+
             # Kitabı kütüphaneye ekle
             my_library.add_book(new_book)
-            
-        elif secim == "2":
+
+        elif option == "3":
             # Kitap silme
             print("\n--- KİTAP SİLME ---")
             isbn = input("Silinecek kitabın ISBN'ini girin: ")
             my_library.remove_book(isbn)
-            
-        elif secim == "3":
+
+        elif option == "4":
             # Kitapları listeleme
             print("\n--- KİTAP LİSTESİ ---")
             my_library.list_books()
             print(f"\nToplam kitap sayısı: {my_library.total_books()}")
-            
-        elif secim == "4":
+
+        elif option == "5":
             # Kitap arama
             print("\n--- KİTAP ARAMA ---")
             isbn = input("Aranacak kitabın ISBN'ini girin: ")
@@ -77,23 +101,15 @@ def main():
                 print(f"Kitap bulundu: {found_book}")
             else:
                 print("Kitap bulunamadı.")
-                
-        elif secim == "5":
+
+        elif option == "6":
             print("Program sonlandırılıyor...")
             print("Çıkış Yapıldı")
             break
-            
+
         else:
-            print("Geçersiz seçim! Lütfen 1-5 arasında bir sayı girin.")
+            print("Geçersiz seçim! Lütfen 1-6 arasında bir sayı girin.")
 
-if __name__ == "__main__":
+
+if __name__ == "__main__":  # Program başlatıldığında bu fonksiyon çalışır
     main()
-
-
-
-
-
-
-
-
-
